@@ -8,25 +8,25 @@ library(tidyverse)
 
 ## iphoneX launch- Sep 12, 2017
 ## iphoneX sale- Nov 03, 2017
-consumer_key<-'HjGiIoPNW4wa5oMRKDOUtDHdU'
-consumer_secret<-'ifcwxyOLUPNsr1Rci1qkTaXAaCx5EGyZ0OxaFEAIUQyAQQcNFf'
-access_token<-'81578669-CxBJMX8fHKVy8RBTZK5gHKojx3HBQTiVFimTdLMEl'
-access_token_secret<-'H9gNZgVWEzqFxAGoU978wXWGceZdGmYMHQQ2mtS3wPlYS'
+consumer_key<-'xxxyyyzzz'
+consumer_secret<-'xxxyyyzzz'
+access_token<-'xxxyyyzzz'
+access_token_secret<-'xxxyyyzzz'
 
 setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_token_secret)
 iphonex = twitteR::searchTwitter('#iphonex -filter:retweets',lang = "en", n = 10000, since = '2017-12-20',
                             until = '2017-12-30',retryOnRateLimit = 1)
 d = twitteR::twListToDF(iphonex)
-write.csv(d,"/Users/swapnilpatil/Study/MS-Bana/Projects/Iphonex vs Galaxy/iphone.csv")
+write.csv(d,"iphone.csv")
 
 note8 = twitteR::searchTwitter('#note8 -filter:retweets',lang = "en", n = 10000, since = '2017-12-20',
                                until = '2017-12-30',retryOnRateLimit = 1)
 d = twitteR::twListToDF(note8)
-write.csv(d,"/Users/swapnilpatil/Study/MS-Bana/Projects/Iphonex vs Galaxy/note8.csv")
+write.csv(d,"note8.csv")
 
 
-iphonex<-read.csv("/Users/swapnilpatil/Study/MS-Bana/Projects/Iphonex vs Galaxy/iphone.csv",fileEncoding="latin1")
-note8<-read.csv("/Users/swapnilpatil/Study/MS-Bana/Projects/Iphonex vs Galaxy/note8.csv",fileEncoding="latin1")
+iphonex<-read.csv("iphone.csv",fileEncoding="latin1")
+note8<-read.csv("note8.csv",fileEncoding="latin1")
 
 
 # for now, we will just concentrate on the text of tweets
@@ -92,8 +92,8 @@ wordcloud(names(note8_wf),note8_wf,colors = c("grey80", "darkgoldenrod1", "tomat
 
 
 ## common words in both iphonex and note8 related tweets
-iphonex<-read.csv("/Users/swapnilpatil/Study/MS-Bana/Projects/Iphonex vs Galaxy/iphone.csv",fileEncoding="latin1")
-note8<-read.csv("/Users/swapnilpatil/Study/MS-Bana/Projects/Iphonex vs Galaxy/note8.csv",fileEncoding="latin1")
+iphonex<-read.csv("iphone.csv",fileEncoding="latin1")
+note8<-read.csv("note8.csv",fileEncoding="latin1")
 all_iphone<-paste(iphonex$text,collapse = '')
 all_note8<-paste(note8$text,collapse = '')
 all_tweets<-c(all_iphone,all_note8)
